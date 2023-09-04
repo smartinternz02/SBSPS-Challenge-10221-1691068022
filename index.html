@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Placement Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <div class="Heading">Placement Prediction</div>
+    <form action="/predict" method="post">
+      <div class="form-row">
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="1"> Male</option>
+          <option class="radio" value="0"> Female</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="tenthboard">10th Board:</label>
+        <select name="tenthboard" id="tenthboard" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="0">CBSE</option>
+          <option class="radio" value="1">ICSE</option>
+          <option class="radio" value="3">WBBSE</option>
+          <option class="radio" value="2">OTHERS STATE BOARD</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="tenthmarks">10th Marks:</label>
+        <input step="any" name="tenthmarks" type="number" required />
+      </div>
+
+      <div class="form-row">
+        <label for="twelvethboard">12th Board:</label>
+        <select name="twelvethboard" id="twelvethboard" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="0">CBSE</option>
+          <option class="radio" value="1">ISE</option>
+          <option class="radio" value="3">WBCHSE</option>
+          <option class="radio" value="2">OTHERS STATE BOARD</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="twelvethmarks">12th Marks:</label>
+        <input type="number" step="any" name="twelvethmarks" required />
+      </div>
+
+      <div class="form-row">
+        <label for="stream">Stream:</label>
+        <select name="stream" id="stream" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="0">
+            Chemical Engineering
+          </option>
+          <option class="radio" value="1">Civil Engineering</option>
+          <option class="radio" value="2">
+            Computer Science and Design
+          </option>
+          <option class="radio" value="3">
+            Computer Science and Engineering
+          </option>
+          <option class="radio" value="4">
+            Computer Science in AIML
+          </option>
+          <option class="radio" value="5">
+            Computer Science in Data Science
+          </option>
+          <option class="radio" value="6">
+            Electrical Engineering
+          </option>
+          <option class="radio" value="7">
+            Electrical and Electronics Engineering
+          </option>
+          <option class="radio" value="8">
+            Electronics and Communication Engineering
+          </option>
+          <option class="radio" value="9">
+            Information Technology
+          </option>
+          <option class="radio" value="10">
+            Mechanical Engineering
+          </option>
+          <option class="radio" value="11">
+            Production Engineering
+          </option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="cgpa">CGPA:</label>
+        <input type="number" step="any" name="cgpa" id="cgpa" type="number" required />
+      </div>
+
+      <div class="form-row">
+        <label for="internship">Internship:</label>
+        <select name="internship" id="internship" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="1"> Yes</option>
+          <option class="radio" value="0"> No</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="training">Training:</label>
+        <select name="training" id="training" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="1"> Yes</option>
+          <option class="radio" value="0"> No</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="Backlog">History of Backlog:</label>
+        <select name="Backlog" id="Backlog" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="1"> Yes</option>
+          <option class="radio" value="0"> No</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="Project">InnovativeProject:</label>
+        <select name="Project" id="Project" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="1"> Yes</option>
+          <option class="radio" value="0"> No</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="communication">Communication (1-5 rating):</label>
+        <select name="communication" id="communication" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="1">POOR</option>
+          <option class="radio" value="2">AVERAGE</option>
+          <option class="radio" value="3">GOOD</option>
+          <option class="radio" value="4">VERY GOOD</option>
+          <option class="radio" value="5">EXCELLENT</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="courses">Courses:</label>
+        <select name="courses" id="courses" required>
+          <option class="radio">--SELECT--</option>
+          <option class="radio" value="1"> Yes</option>
+          <option class="radio" value="0"> No</option>
+        </select>
+      </div>
+      <div class="btn1">
+        <button type="submit">Predict</button>
+      </div>
+      <div class="btn2">
+        <button id="clear-button" onclick="window.location.href='/clear'">Clear</button>
+      </div>
+
+      <div class="predict">
+        {% if prediction is not none %}
+        <h2>Prediction: {{ prediction }}</h2>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
